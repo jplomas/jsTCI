@@ -5,4 +5,8 @@ require('@babel/register')({
 
 // Import the rest of our application.
 // module.exports = require('./test/lbm.js');
-module.exports = require('./test/propofol.js');
+module.exports = {
+  ...require('./test/alfentanil.js'),
+  ...require('./test/propofol.js'),
+  ...require('./test/lbm.js'),
+};
