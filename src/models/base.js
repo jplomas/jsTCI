@@ -1,5 +1,8 @@
 class Three {
   constructor(pharmacokinetics) {
+    // No initial model
+    this.model = false;
+    
     // Initial concentration is zero in all components
     this.x1 = 0;
     this.x2 = 0;
@@ -28,9 +31,36 @@ class Three {
     // this.k31 /= 60
     // this.keo /= 60
   }
+  rateConstantsToSeconds() {
+    this.k10 /= 60
+    this.k12 /= 60
+    this.k13 /= 60
+    this.k21 /= 60
+    this.k31 /= 60
+    this.keo /= 60
+  }
+  fromClearances() {
+    /*
+    Converts intercompartment clearances into rate constants
+    Needed as we currently use them for the maths
+
+    source http://www.pfim.biostat.fr/PFIM_PKPD_library.pdf page 8
+    */
+    this.k10 = this.Q1 / this.v1
+    this.k12 = this.Q2 / this.v1
+    this.k13 = this.Q3 / this.v1
+    this.k21 = (this.k12 * this.v1) / this.v2
+    this.k31 = (this.k13 * this.v1) / this.v3
+  }
+  throwIfNoModel() {
+    if (!this.model) { 
+      throw 'ERROR: No drug model selected';
+    }
+  }
   give_drug(drug_milligrams) {
+    this.throwIfNoModel();
     // """ add bolus of drug to central compartment """
-    this.x1 = this.x1 + drug_milligrams / this.v1;
+    this.x1 = this.x1 + (drug_milligrams / this.v1);
   }
   one_second() {
     var x1k10 = this.x1 * this.k10;
