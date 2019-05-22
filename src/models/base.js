@@ -1,5 +1,5 @@
 class Three {
-  constructor(pharmacokinetics) {
+  constructor() {
     // No initial model
     this.model = false;
     
@@ -8,28 +8,6 @@ class Three {
     this.x2 = 0;
     this.x3 = 0;
     this.xeo = 0;
-
-    // # declare variables so the linting doesnt get upset
-    // this.v1: float
-    // this.v2: float
-    // this.v3: float
-    // this.Q1: float
-    // this.Q2: float
-    // this.Q3: float
-    // this.k10: float
-    // this.k12: float
-    // this.k13: float
-    // this.k21: float
-    // this.k31: float
-    // this.keo: float
-
-    // # divide by 60 as we will be working in seconds
-    // this.k10 /= 60
-    // this.k12 /= 60
-    // this.k13 /= 60
-    // this.k21 /= 60
-    // this.k31 /= 60
-    // this.keo /= 60
   }
   rateConstantsToSeconds() {
     this.k10 /= 60

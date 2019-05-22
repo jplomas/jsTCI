@@ -1,4 +1,3 @@
-
 var leanbodymass = require('../src/weights/leanbodymass');
 
 var expect = require('chai').expect;

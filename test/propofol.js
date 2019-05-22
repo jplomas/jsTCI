@@ -1,4 +1,3 @@
-// var Three = require('../src/models/base').Three;
 var Propofol = require('../src/models/propofol').Propofol;
 
 var expect = require('chai').expect;
@@ -96,4 +95,3 @@ describe('Propofol functions [propofol.js]', function() {
       });
     });
 });
-// console.log(patient.effect_bolus(2));

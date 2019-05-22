@@ -1,5 +1,4 @@
 var Three = require('../models/base').Three;
-var leanbodymass = require('../weights/leanbodymass');
 
 class Alfentanil extends Three {
   Maitre(age, weight, height, sex) {
