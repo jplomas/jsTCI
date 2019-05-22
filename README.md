@@ -1,7 +1,7 @@
 # jsTCI
 
 [![Build Status](https://travis-ci.org/jplomas/jsTCI.svg?branch=master)](https://travis-ci.org/jplomas/jsTCI)
-[![Coverage Status](https://coveralls.io/repos/github/jplomas/jsTCI/badge.svg?branch=master)](https://coveralls.io/github/jplomas/jsTCI?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/jplomas/jsTCI/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/jplomas/jsTCI?branch=master)
 [![MIT license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/jplomas/jsTCI/blob/master/LICENSE)
 
 A **work-in-progress** javascript implementation of PyTCI for modelling
