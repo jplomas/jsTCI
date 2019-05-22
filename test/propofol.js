@@ -2,6 +2,7 @@ var Propofol = require('../src/models/propofol').Propofol;
 
 var expect = require('chai').expect;
 var assert = require('chai').assert;
+var sinon  = require('sinon');
 
 describe('Propofol functions [propofol.js]', function() {
   describe('Models setup correctly', function() {
@@ -90,6 +91,20 @@ describe('Propofol functions [propofol.js]', function() {
         patient.Paedfusor(20, 6);
         assert.equal(Math.round(patient.k10 * 100000) / 100000, testk10);
       });
+      it('should warn to console when age of 0.5 is passed', () => {
+        var spy = sinon.spy(console, 'log');
+        var patient = new Propofol;
+        patient.Paedfusor(10, 0.5);
+        assert(spy.calledWith('Warning: age below that for which model is intended'));
+        spy.restore();
+      });
+      it('should warn to console when age of 13 is passed', () => {
+        var spy = sinon.spy(console, 'log');
+        var patient = new Propofol;
+        patient.Paedfusor(10, 13);
+        assert(spy.calledWith('Warning: patient older than intended for model'));
+        spy.restore();
+      });
     });
     describe('Kataria model', function() {
       it('20kg 6 year old should have v1 of 7.6', function() {
@@ -106,6 +121,20 @@ describe('Propofol functions [propofol.js]', function() {
         var patient = new Propofol;
         patient.Kataria(20, 6);
         assert.equal(Math.round(patient.v3 * 10) / 10, 122.4);
+      });
+      it('should warn to console when age of 2 is passed', () => {
+        var spy = sinon.spy(console, 'log');
+        var patient = new Propofol;
+        patient.Kataria(10, 2);
+        assert(spy.calledWith('Warning: age below that for which model is intended'));
+        spy.restore();
+      });
+      it('should warn to console when age of 12 is passed', () => {
+        var spy = sinon.spy(console, 'log');
+        var patient = new Propofol;
+        patient.Kataria(10, 12);
+        assert(spy.calledWith('Warning: patient older than intended for model'));
+        spy.restore();
       });
     });
 });
