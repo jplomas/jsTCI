@@ -9,4 +9,5 @@ module.exports = {
   ...require('./test/alfentanil.js'),
   ...require('./test/propofol.js'),
   ...require('./test/lbm.js'),
+  ...require('./test/remifentanil.js'),
 };
