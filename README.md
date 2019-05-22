@@ -20,7 +20,8 @@ Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
 
 ## Status/TODO
 
-**Body Mass equations:**
+### Body Mass equations
+
 [X] BMI
 [X] Ideal body weight (Devine)
 [X] Adjusted body weight
@@ -30,23 +31,27 @@ Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
 [X] Hume(1971)
 [X] Janmahasation(2005)
 
-**Propofol models**
+### Propofol models
+
 [X] Schnider
 [X] Marsh
 [X] Kataria
 [X] Paedfusor
 
-**Remifentanil models**
+### Remifentanil models
+
 [X] Minto
 
-**Alfentanil models**
+### Alfentanil models
 [X] Maitre
 
-**Propofol infusions**
+### Propofol infusions
+
 [ ] 'effect_bolus' method
 [ ] 'plasma_infusion' method
 
-**JS infrastructure**
+### JS infrastructure
+
 [X] Mocha testing framework
 [X] Code coverage
 [X] Travis CI
