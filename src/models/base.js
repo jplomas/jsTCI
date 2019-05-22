@@ -58,6 +58,7 @@ class Three {
   }
 
   wait_time(time_seconds) {
+    this.throwIfNoModel();
     // """ model distribution of drug between compartments over specified time period """
     for (var i = 0; i < time_seconds; i++) {
       this.one_second();

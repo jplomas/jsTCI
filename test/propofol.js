@@ -4,6 +4,20 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 
 describe('Propofol functions [propofol.js]', function() {
+  describe('Models setup correctly', function() {
+    it('Giving a drug without selecting a model should throw an error', function() {
+        expect(function() {
+          var patient = new Propofol;  
+          patient.give_drug(50);
+        }).to.throw();
+    });
+    it('Waiting and remodelling without selecting a model should throw an error', function() {
+        expect(function() {
+          var patient = new Propofol;  
+          patient.wait_time(60);
+        }).to.throw();
+    });
+});
     describe('Marsh model', function() {
       it('70kg patient should have v1 of 16.0', function() {
         var patient = new Propofol;

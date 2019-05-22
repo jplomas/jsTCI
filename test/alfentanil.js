@@ -4,6 +4,20 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 
 describe('Alfentanil functions [alfentanil.js]', function() {
+  describe('Models setup correctly', function() {
+    it('Giving a drug without selecting a model should throw an error', function() {
+        expect(function() {
+          var patient = new Alfentanil;  
+          patient.give_drug(50);
+        }).to.throw();
+    });
+    it('Waiting and remodelling without selecting a model should throw an error', function() {
+        expect(function() {
+          var patient = new Alfentanil;  
+          patient.wait_time(60);
+        }).to.throw();
+    });
+});
     describe('Maitre model', function() {
       it('30 year old 70kg/170cm patient should have v1 of 7.77', function() {
         var patient = new Alfentanil;

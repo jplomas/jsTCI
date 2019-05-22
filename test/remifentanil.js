@@ -4,6 +4,20 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 
 describe('Remifentanil functions [remifentanil.js]', function() {
+    describe('Models setup correctly', function() {
+        it('Giving a drug without selecting a model should throw an error', function() {
+            expect(function() {
+              var patient = new Remifentanil;  
+              patient.give_drug(50);
+            }).to.throw();
+        });
+        it('Waiting and remodelling without selecting a model should throw an error', function() {
+            expect(function() {
+              var patient = new Remifentanil;  
+              patient.wait_time(60);
+            }).to.throw();
+        });
+    });
     describe('Minto model', function() {
       it('40 year old 80kg/180cm patient should have v3 of 5.42', function() {
         var patient = new Remifentanil;
