@@ -22,39 +22,40 @@ Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
 
 ### Body Mass equations
 
-[X] BMI
-[X] Ideal body weight (Devine)
-[X] Adjusted body weight
-[X] James Equation
-[X] Boer
-[X] Hume(1966)
-[X] Hume(1971)
-[X] Janmahasation(2005)
+- [X] BMI
+- [X] Ideal body weight (Devine)
+- [X] Adjusted body weight
+- [X] James Equation
+- [X] Boer
+- [X] Hume(1966)
+- [X] Hume(1971)
+- [X] Janmahasation(2005)
 
 ### Propofol models
 
-[X] Schnider
-[X] Marsh
-[X] Kataria
-[X] Paedfusor
+- [X] Schnider
+- [X] Marsh
+- [X] Kataria
+- [X] Paedfusor
 
 ### Remifentanil models
 
-[X] Minto
+- [X] Minto
 
 ### Alfentanil models
-[X] Maitre
+
+- [X] Maitre
 
 ### Propofol infusions
 
-[ ] 'effect_bolus' method
-[ ] 'plasma_infusion' method
+- [ ] 'effect_bolus' method
+- [ ] 'plasma_infusion' method
 
 ### JS infrastructure
 
-[X] Mocha testing framework
-[X] Code coverage
-[X] Travis CI
-[ ] Package for NPM
-[ ] Browserify & build for browser
-[ ] Usage documentation and examples
+- [X] Mocha testing framework
+- [X] Code coverage
+- [X] Travis CI
+- [ ] Package for NPM
+- [ ] Browserify & build for browser
+- [ ] Usage documentation and examples
