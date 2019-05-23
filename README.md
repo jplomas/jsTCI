@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jplomas/jsTCI.svg?branch=master)](https://travis-ci.org/jplomas/jsTCI)
 [![Coverage Status](https://coveralls.io/repos/github/jplomas/jsTCI/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/jplomas/jsTCI?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/faa36652ca614a08a4f2d02797f589e4)](https://www.codacy.com/app/jplomas/jsTCI?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jplomas/jsTCI&amp;utm_campaign=Badge_Grade)
 [![MIT license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/jplomas/jsTCI/blob/master/LICENSE)
 
 A **work-in-progress** javascript implementation of PyTCI for modelling
@@ -49,7 +50,7 @@ Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
 
 ### Propofol infusions
 
-- [X] 'effect_bolus' method
+- [X] 'effectBolus' method
 - [ ] 'plasma_infusion' method
 
 ### JS infrastructure

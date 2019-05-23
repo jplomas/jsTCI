@@ -8,13 +8,13 @@ describe('Alfentanil functions [alfentanil.js]', function() {
     it('Giving a drug without selecting a model should throw an error', function() {
         expect(function() {
           var patient = new Alfentanil;  
-          patient.give_drug(50);
+          patient.giveDrug(50);
         }).to.throw();
     });
     it('Waiting and remodelling without selecting a model should throw an error', function() {
         expect(function() {
           var patient = new Alfentanil;  
-          patient.wait_time(60);
+          patient.waitTime(60);
         }).to.throw();
     });
 });
