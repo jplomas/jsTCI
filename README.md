@@ -49,7 +49,7 @@ Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
 
 ### Propofol infusions
 
-- [ ] 'effect_bolus' method
+- [X] 'effect_bolus' method
 - [ ] 'plasma_infusion' method
 
 ### JS infrastructure
