@@ -15,4 +15,11 @@ describe('Infusions functions [propofol.js only for now]', function() {
             assert.equal(testpatient.x1, 0);
         });
     });
+    describe('Effect site targetting bolus', function() {
+        it('For an effect site of 6 in a 40 year old 70kg/190cm male patient required bolus is 95.6', function() {
+            var testpatient = new Propofol;
+            testpatient.Schnider(40, 70, 190, 'm');
+            assert.equal(testpatient.effect_bolus(6), 95.6);
+        });
+    });
 });

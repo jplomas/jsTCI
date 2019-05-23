@@ -125,34 +125,31 @@ class Propofol extends Three {
     this.throwIfNoModel();
     this.old_conc = {"ox1": this.x1, "ox2": this.x2, "ox3": this.x3, "oxeo": this.xeo};
 
-  //   var ttpe = 90
-  //   var bolus_seconds = 10
-  //   var bolus = 10
+    var ttpe = 90
+    var bolus_seconds = 10
+    var bolus = 10
 
-  //   var effect_error = 100
-  //   while (!(-5 < effect_error && effect_error < 5)) {
-  //     console.log('effect error: ' + effect_error);
-  //       var mgpersec = bolus / bolus_seconds
+    var effect_error = 100
+    while (!(-1 < effect_error && effect_error < 1)) {
+        var mgpersec = bolus / bolus_seconds;
         
-  //       for (var i = 0; i < 9; i++) {
-  //         this.give_drug(mgpersec)
-  //         this.wait_time(1)
-  //       }
+        // replace the tenseconds method in Python implementation with this loop
+        for (var i = 0; i < 10; i++) {
+          this.give_drug(mgpersec);
+          this.wait_time(1);
+        }
 
-  //       this.wait_time(80)
-  //       console.log('going to do maths with this.xeo='+this.xeo+' and target='+target);
-  //       effect_error = ((this.xeo - target) / target) * 100
-  //       var step = effect_error / -1
-  //       bolus += step
-  //       bolus = Math.round(bolus * 100) / 100
+        this.wait_time(ttpe - 10);
+        effect_error = ((this.xeo - target) / target) * 100
+        var step = effect_error / -5
+        bolus += step
 
-  //       console.log(effect_error, bolus, step, this.xeo)
-  //       // # reset concentrations
-  //       //TODOreset_concs(old_conc)
-  //     }
-  //   bolus_needed = mgpersec * 10
+        // # reset concentrations
+        this.reset_concs(old_conc)
+      }
+    var bolus_needed = mgpersec * 10
 
-  //   return bolus_needed
+    return Math.round(bolus_needed * 10) / 10
   }
 }
 module.exports = { Propofol };
