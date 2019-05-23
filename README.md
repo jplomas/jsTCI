@@ -2,62 +2,62 @@
 
 [![Build Status](https://travis-ci.org/jplomas/jsTCI.svg?branch=master)](https://travis-ci.org/jplomas/jsTCI)
 [![Coverage Status](https://coveralls.io/repos/github/jplomas/jsTCI/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/jplomas/jsTCI?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/faa36652ca614a08a4f2d02797f589e4)](https://www.codacy.com/app/jplomas/jsTCI?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jplomas/jsTCI&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/faa36652ca614a08a4f2d02797f589e4)](https://www.codacy.com/app/jplomas/jsTCI?utm_source=github.com&utm_medium=referral&utm_content=jplomas/jsTCI&utm_campaign=Badge_Grade)
 [![MIT license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/jplomas/jsTCI/blob/master/LICENSE)
 
 A **work-in-progress** javascript implementation of PyTCI for modelling
 Target Controlled Infusions in node.js or in a browser.
 
-Ported from PyTCI: https://github.com/JMathiszig-Lee/PyTCI
+Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 
 ## Development
 
-1. Clone repo
+ 1. Clone repo
 
-2. `npm install`
+ 2. `npm install`
 
-3. Run tests: `npm run test`
+ 3. Run tests: `npm run test`
 
-4. Check code coverage: `npm run nyc`
+ 4. Check code coverage: `npm run nyc`
 
 ## Status/TODO
 
 ### Body Mass equations
 
-- [X] BMI
-- [X] Ideal body weight (Devine)
-- [X] Adjusted body weight
-- [X] James Equation
-- [X] Boer
-- [X] Hume(1966)
-- [X] Hume(1971)
-- [X] Janmahasation(2005)
+- [x] BMI
+- [x] Ideal body weight (Devine)
+- [x] Adjusted body weight
+- [x] James Equation
+- [x] Boer
+- [x] Hume(1966)
+- [x] Hume(1971)
+- [x] Janmahasation(2005)
 
 ### Propofol models
 
-- [X] Schnider
-- [X] Marsh
-- [X] Kataria
-- [X] Paedfusor
+- [x] Schnider
+- [x] Marsh
+- [x] Kataria
+- [x] Paedfusor
 
 ### Remifentanil models
 
-- [X] Minto
+- [x] Minto
 
 ### Alfentanil models
 
-- [X] Maitre
+- [x] Maitre
 
 ### Propofol infusions
 
-- [X] 'effectBolus' method
+- [x] 'effectBolus' method
 - [ ] 'plasma_infusion' method
 
 ### JS infrastructure
 
-- [X] Mocha testing framework
-- [X] Code coverage
-- [X] Travis CI
+- [x] Mocha testing framework
+- [x] Code coverage
+- [x] Travis CI
 - [ ] Package for NPM
 - [ ] Browserify & build for browser
 - [ ] Usage documentation and examples

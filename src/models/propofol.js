@@ -137,7 +137,7 @@ class Propofol extends Three {
       mgpersec = bolus / bolusSeconds;
 
       // replace the tenseconds method in Python implementation with this loop
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 10; i += 1) {
         this.giveDrug(mgpersec);
         this.waitTime(1);
       }
