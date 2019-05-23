@@ -60,12 +60,8 @@ module.exports = {
     return Math.round(bmi * 10) / 10;
   },
   idealbodyweight(height, sex) {
-    // ideal body weight as per ARDSnet/Devine  //
-
     let ibm = 0;
-
     this.genderValid(sex);
-
     if (sex === 'm') {
       ibm = 50.0 + 0.91 * (height - 152.4);
     } else {
