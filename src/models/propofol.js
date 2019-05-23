@@ -2,6 +2,14 @@ var Three = require('../models/base').Three;
 var leanbodymass = require('../weights/leanbodymass');
 
 class Propofol extends Three {
+  // Infusion functions
+  reset_concs(old) {
+    // """ resets concentrations using python dictionary"""
+    this.x1 = old.ox1;
+    this.x2 = old.ox2;
+    this.x3 = old.ox3;
+    this.xeo = old.oxeo;
+  }
   Marsh(weight) {
     this.v1 = 0.228 * weight;
     this.v2 = 0.463 * weight;
@@ -113,10 +121,9 @@ class Propofol extends Three {
     this.model = true;
     this.rateConstantsToSeconds();
   }
-  // TODO:
-  // effect_bolus(target) {
-  //   this.throwIfNoModel();
-  //   var old_conc = {"ox1": this.x1, "ox2": this.x2, "ox3": this.x3, "oxeo": this.xeo}
+  effect_bolus(target) {
+    this.throwIfNoModel();
+    this.old_conc = {"ox1": this.x1, "ox2": this.x2, "ox3": this.x3, "oxeo": this.xeo};
 
   //   var ttpe = 90
   //   var bolus_seconds = 10
@@ -146,6 +153,6 @@ class Propofol extends Three {
   //   bolus_needed = mgpersec * 10
 
   //   return bolus_needed
-  // }
+  }
 }
 module.exports = { Propofol };

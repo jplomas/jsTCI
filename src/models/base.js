@@ -3,6 +3,9 @@ class Three {
     // No initial model
     this.model = false;
     
+    // Empty store of previous concentrations
+    this.old_conc = {};
+
     // Initial concentration is zero in all components
     this.x1 = 0;
     this.x2 = 0;
