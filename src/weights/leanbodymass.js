@@ -1,11 +1,14 @@
 module.exports = {
+  genderValid(sex) {
+    if (sex !== 'm' && sex !== 'f') {
+      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
+    }
+  },
   james(height, weight, sex) {
     // returns lean body mass as per james equations //
     // James, W. "Research on obesity: a report of the DHSS/MRC group" HM Stationery Office 1976//
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
 
     if (sex === 'm') {
       return 1.1 * weight - 128 * ((weight / height) * (weight / height));
@@ -17,9 +20,8 @@ module.exports = {
     // returns lean body mass as per Boer equation //
     // Boer P. "Estimated lean body mass as an index for normalization of body fluid volumes in man." Am J Physiol 1984; 247: F632-5//
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
+
     let lbm = 0;
     if (sex === 'm') {
       lbm = 0.407 * weight + 0.267 * height - 19.2;
@@ -32,9 +34,8 @@ module.exports = {
     // returns lean body mass as per the 1966 Hume paper //
     // Hume, R "Prediction of lean body mass from height and weight.". J Clin Pathol. 1966 Jul; 19(4):389-91//
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
+
     let lbm = 0;
     if (sex === 'm') {
       lbm = 0.3281 * weight + 0.33929 * height - 29.5336;
@@ -47,9 +48,7 @@ module.exports = {
     // returns lean body mass from Hume & Weyers(1971) //
     // Relationship between total body water and surface area in normal and obese subjects. Hume R, Weyers E J Clin Pathol 24 p234-8 (1971 Apr) //
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
 
     let lbm = 0;
 
@@ -64,9 +63,7 @@ module.exports = {
   janmahasation(height, weight, sex) {
     // lean body mass as per Janmahasation / Han 2005 //
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
 
     let lbm = 0;
     const bodymass = this.bmi(height, weight);
@@ -88,9 +85,7 @@ module.exports = {
 
     let ibm = 0;
 
-    if (sex !== 'm' && sex !== 'f') {
-      throw new TypeError(`Unknown sex ${sex}. This algorithm can only handle m and f. :(`);
-    }
+    this.genderValid(sex);
 
     if (sex === 'm') {
       ibm = 50.0 + 0.91 * (height - 152.4);
