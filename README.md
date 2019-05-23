@@ -12,13 +12,13 @@ Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 
 ## Development
 
- 1. Clone repo
+1. Clone repo
 
- 2. `npm install`
+2. `npm install`
 
- 3. Run tests: `npm run test`
+3. Run tests: `npm run test`
 
- 4. Check code coverage: `npm run nyc`
+4. Check code coverage: `npm run nyc`
 
 ## Status/TODO
 
