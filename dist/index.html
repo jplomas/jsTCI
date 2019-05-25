@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script src="./jsTCI.js"></script>
+    </head>
+    <body>
+        90kg patient, Marsh model<br>
+        x1 after 200mg Propofol = <span id="output"></span>
+        <script>
+            var patient = new Propofol();
+            patient.Marsh(90);
+            patient.giveDrug(200);
+            var output = document.getElementById('output');
+            output.innerHTML = patient.x1;
+        </script>
+    </body>
+</html>

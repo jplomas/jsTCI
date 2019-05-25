@@ -52,7 +52,7 @@ Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 ### Propofol infusions
 
 - [x] 'effectBolus' method
-- [ ] 'plasma_infusion' method
+- [x] 'plasma_infusion' method
 
 ### JS infrastructure
 
@@ -60,5 +60,7 @@ Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 - [x] Code coverage
 - [x] Travis CI
 - [ ] Package for NPM
-- [ ] Browserify & build for browser
+- [X] Browserify & build for browser
 - [ ] Usage documentation and examples
+
+_(a very rudimentary example running in the browser is included in dist/index.html)_

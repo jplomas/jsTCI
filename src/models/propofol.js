@@ -186,7 +186,6 @@ class Propofol extends Three {
       offset = firstCp - gradient * 3;
       finalMgpersec = (target - offset) / gradient;
       if (finalMgpersec < 0) {
-        console.log('BINGO!!!');
         // do not allow for a negative drug dose
         finalMgpersec = 0;
       }
