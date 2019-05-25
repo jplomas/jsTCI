@@ -154,5 +154,61 @@ class Propofol extends Three {
 
     return Math.round(bolusNeeded * 10) / 10;
   }
+
+  plasmaInfusion(target, time) {
+    /*
+    returns list of infusion rates to maintain desired plasma concentration
+      inputs:
+        target: desired plasma concentration in ug/min
+        time: infusion duration in seconds
+
+    returns:
+    list of infusion rates over 10 seconds
+    */
+
+    this.oldConc = { ox1: this.x1, ox2: this.x2, ox3: this.x3, oxeo: this.xeo };
+    const sections = Math.round(time / 10);
+    // console.log('sections = ' + sections);
+    const pumpInstructions = [];
+    let firstCp = 0;
+    let secondCp = 0;
+    let sectionCp = 0;
+    let gradient = 0;
+    let finalMgpersec = 0;
+    let offset = 0;
+
+    for (let i = 0; i < sections; i += 1) {
+      firstCp = this.tenseconds(3);
+      this.resetConcs(this.oldConc);
+      secondCp = this.tenseconds(12);
+      this.resetConcs(this.oldConc);
+      gradient = (secondCp - firstCp) / 9;
+      offset = firstCp - gradient * 3;
+      finalMgpersec = (target - offset) / gradient;
+      if (finalMgpersec < 0) {
+        console.log('BINGO!!!');
+        // do not allow for a negative drug dose
+        finalMgpersec = 0;
+      }
+      sectionCp = this.tenseconds(finalMgpersec);
+      this.oldConc = {
+        ox1: this.x1,
+        ox2: this.x2,
+        ox3: this.x3,
+        oxeo: this.xeo
+      };
+      pumpInstructions.push({ finalMgpersec, sectionCp });
+    }
+    return pumpInstructions;
+  }
+
+  tenseconds(mgpersec) {
+    // gives set amount of drug every second for 10 seconds
+    for (let i = 0; i < 10; i += 1) {
+      this.giveDrug(mgpersec);
+      this.waitTime(1);
+    }
+    return this.x1;
+  }
 }
 module.exports = { Propofol };
