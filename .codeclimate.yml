@@ -33,3 +33,4 @@ checks:
 exclude_patterns:
 - "docs/jsTCI.js"
 - "dist/jsTCI.js"
+- "test/"
