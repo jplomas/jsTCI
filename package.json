@@ -1,7 +1,7 @@
 {
-  "name": "jsTCI",
-  "version": "0.5.0",
-  "description": "Port of pyTCI",
+  "name": "jstci",
+  "version": "1.0.0",
+  "description": "jsTCI: Target controlled infusion modelling in node & the browser (port of pyTCI with added JS magic)",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
