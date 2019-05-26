@@ -7,7 +7,7 @@
         "mocha": true
     },
     "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier"],
+    "plugins": ["prettier", "eslint-plugin-html"],
       "rules": {
     "prettier/prettier": ["error"]
     },
