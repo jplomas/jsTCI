@@ -59,7 +59,7 @@ Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 - [x] Mocha testing framework
 - [x] Code coverage
 - [x] Travis CI
-- [ ] Package for NPM
+- [X] Package for NPM
 - [X] Browserify & build for browser
 - [ ] Usage documentation
 - [X] Usage examples
