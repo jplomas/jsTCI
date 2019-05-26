@@ -61,6 +61,9 @@ Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 - [x] Travis CI
 - [ ] Package for NPM
 - [X] Browserify & build for browser
-- [ ] Usage documentation and examples
+- [ ] Usage documentation
+- [X] Usage examples
 
-_(a very rudimentary example running in the browser is included in dist/index.html)_
+## FYI...
+
+A very rudimentary example running in the browser is included in `dist/index.html`
