@@ -28,8 +28,54 @@
             </div>
             <div class="tab-pane fade" id="calc" role="tabpanel" aria-labelledby="calc-tab">
                 <div class="container mt-3">
-                  90kg patient, Marsh model<br>
-                  x1 after 200mg Propofol = <span id="output"></span>
+                    <form>
+                        <div class="form-group row">
+                          <label for="inputWeight" class="col-sm-2 col-form-label">Weight</label>
+                          <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputWeight" placeholder="weight in kg">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+                          <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputAge" placeholder="age in years">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputHeight" class="col-sm-2 col-form-label">Height</label>
+                            <div class="col-sm-10">
+                              <input type="number" class="form-control" id="inputHeight" placeholder="height in cm">
+                            </div>
+                          </div>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
+                            <div class="col-sm-10">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridSex" id="gridSex1" value="option1" checked>
+                                <label class="form-check-label" for="gridSex1">
+                                  Female
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridSex" id="gridSex2" value="option2">
+                                <label class="form-check-label" for="gridSex2">
+                                  Male
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                        <div class="form-group row">
+                          <div class="col-sm-10">
+                            <button type="submit" id="marsh" class="btn btn-outline-primary">Marsh</button>
+                            <button type="submit" id="schnider" class="btn btn-outline-primary">Schnider</button>
+                            <button type="submit" id="kataria" class="btn btn-outline-primary">Kataria</button>
+                            <button type="submit" id="paedfusor" class="btn btn-outline-primary">Paedfusor</button>
+                          </div>
+                        </div>
+                      </form>
+                  <span id="output"></span>
                 </div>
             </div>
             <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
@@ -41,14 +87,9 @@
             </div>
           </div>
         
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script>
-          // do some calculations
-          var testpatient = new Propofol();
-          testpatient.Marsh(90);
-          testpatient.giveDrug(200);
-          var x1 = testpatient.x1;
-          // round to 2 decimal places and put onto DOM
-          document.getElementById("output").innerHTML = Math.round(x1 * 100) / 100;
+        $(document).ready(function() {
 
           // do modelling
           var patient = new Propofol();
@@ -143,8 +184,62 @@
           // draw chart
           new Chart(ctx, options);
 
+          // function to change UI element on models
+          function buttonClass(active) {
+            var btns = $('button');
+            for (var i = 0; i < btns.length; i+= 1) {
+              if (btns[i] === active) {
+                $(btns[i]).removeClass('btn-outline-primary');
+                $(btns[i]).addClass('btn-primary');
+              } else {
+                $(btns[i]).removeClass('btn-primary');
+                $(btns[i]).addClass('btn-outline-primary');
+              }
+            }
+          }
+
+          // setup event handlers
+          $('button').click(function(e) {
+            e.preventDefault();
+            weight = $('#inputWeight').val();
+            height = $('#inputHeight').val();
+            age = $('#inputAge').val();
+            if (this.innerHTML === 'Marsh') {
+              // do some calculations
+              var testpatient = new Propofol();
+              testpatient.Marsh(weight);
+              // round to 2 decimal places and put onto DOM
+              document.getElementById("output").innerHTML =
+              `v1 = ${Math.round(testpatient.v1 * 1000) / 1000}, 
+               v2 = ${Math.round(testpatient.v2 * 1000) / 1000},
+               v3 = ${Math.round(testpatient.v3 * 1000) / 1000},
+               k10 = ${Math.round(testpatient.k10 * 1000) / 1000},
+               k12 = ${Math.round(testpatient.k12 * 1000) / 1000},
+               k13 = ${Math.round(testpatient.k13 * 1000) / 1000},
+               k21 = ${Math.round(testpatient.k21 * 1000) / 1000},
+               k31 = ${Math.round(testpatient.k31 * 1000) / 1000},
+               keo = ${Math.round(testpatient.keo * 1000) / 1000}
+               `;
+              //  $(this).removeClass('btn-outline-primary');
+              //  $(this).addClass('btn-primary');
+               buttonClass(this);
+            }
+            if (this.innerHTML === 'Schnider') {
+              console.log('call schnider');
+              buttonClass(this);
+            }
+            if (this.innerHTML === 'Kataria') {
+              console.log('call kataria');
+              buttonClass(this);
+            }
+            if (this.innerHTML === 'Paedfusor') {
+              console.log('call paedfusor');
+              buttonClass(this);
+            }
+          })
+
+        });
         </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
