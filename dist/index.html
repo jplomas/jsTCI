@@ -1,16 +1,151 @@
 <html>
     <head>
         <script src="./jsTCI.js"></script>
+        <script src=""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
+    <title>jsTCI showcase</title>
     <body>
-        90kg patient, Marsh model<br>
-        x1 after 200mg Propofol = <span id="output"></span>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="calc-tab" data-toggle="tab" href="#calc" role="tab" aria-controls="calc" aria-selected="false">Calculations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="container mt-3">
+                  <h1>Introduction</h1>
+                  <p>Work-in-progress showcase / demonstration of jsTCI</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="calc" role="tabpanel" aria-labelledby="calc-tab">
+                <div class="container mt-3">
+                  90kg patient, Marsh model<br>
+                  x1 after 200mg Propofol = <span id="output"></span>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+                <div class="container mt-3">
+                  <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+                    <canvas id="myChart"></canvas>
+                  </div>
+                </div>
+            </div>
+          </div>
+        
         <script>
-            var patient = new Propofol();
-            patient.Marsh(90);
-            patient.giveDrug(200);
-            var output = document.getElementById('output');
-            output.innerHTML = patient.x1;
+          // do some calculations
+          var testpatient = new Propofol();
+          testpatient.Marsh(90);
+          testpatient.giveDrug(200);
+          var x1 = testpatient.x1;
+          // round to 2 decimal places and put onto DOM
+          document.getElementById("output").innerHTML = Math.round(x1 * 100) / 100;
+
+          // do modelling
+          var patient = new Propofol();
+          patient.Schnider(40, 70, 190, "m");
+          var pumpInstructions = patient.plasmaInfusion(3, 60);
+
+          // extract data to plot
+          var array = [
+            0,
+            pumpInstructions[0].finalMgpersec,
+            pumpInstructions[1].finalMgpersec,
+            pumpInstructions[2].finalMgpersec,
+            pumpInstructions[3].finalMgpersec,
+            pumpInstructions[4].finalMgpersec,
+            pumpInstructions[5].finalMgpersec
+          ];
+
+          var array2 = [
+            0,
+            pumpInstructions[0].sectionCp,
+            pumpInstructions[1].sectionCp,
+            pumpInstructions[2].sectionCp,
+            pumpInstructions[3].sectionCp,
+            pumpInstructions[4].sectionCp,
+            pumpInstructions[5].sectionCp
+          ];
+          
+          // setup chart location
+          var ctx = document.getElementById("myChart").getContext("2d");
+
+          // setup chart options
+          var options = {
+            type: "line",
+            options: {
+              title: {
+                display: true,
+                text: "Propofol Schnider model: Male 40 years old, 70kg, 190cm"
+              },
+              reponsive: false,
+              scales: {
+                xAxes: [
+                  {
+                    display: true,
+                    scaleLabel: { display: true, labelString: "time (sec)" }
+                  }
+                ],
+                yAxes: [
+                  {
+                    id: "A",
+                    display: true,
+                    ticks: { beginAtZero: true, min: 0, max: 4 },
+                    scaleLabel: { display: true, labelString: "pump delivery (mg/sec)" }
+                  },
+                  {
+                    id: "B",
+                    position: "right",
+                    display: true,
+                    scaleLabel: { display: true, labelString: "Cp (mcg/ml)" },
+                    ticks: { beginAtZero: true, min: 0, max: 4 },
+                    gridLines: { display: false }
+                  }
+                ]
+              }
+            },
+            data: {
+              labels: ["0", "10", "20", "30", "40", "50", "60"],
+              datasets: [
+                {
+                  label: "mg/sec",
+                  yAxisID: "A",
+                  data: array,
+                  borderWidth: 4,
+                  cubicInterpolationMode: "monotone",
+                  fill: false,
+                  borderColor: "rgb(54, 162, 235)",
+                  fillColor: "rgb(54, 162, 235)"
+                },
+                {
+                  label: "Cp (mcg/ml)",
+                  yAxisID: "B",
+                  data: array2,
+                  borderWidth: 4,
+                  cubicInterpolationMode: "monotone",
+                  fill: false,
+                  borderColor: "rgb(255, 99, 132)",
+                  fillColor: "rgb(255, 99, 132)"
+                }
+              ]
+            }
+          };
+
+          // draw chart
+          new Chart(ctx, options);
+
         </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>

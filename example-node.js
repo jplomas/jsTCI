@@ -1,4 +1,7 @@
-// from command line:
+/* eslint-disable no-console */
+
+// A quick Node.js example of use.
+// From the command line:
 //          node example.js
 
 const { Propofol } = require('./index.js');

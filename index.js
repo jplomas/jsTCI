@@ -11,5 +11,5 @@ module.exports = {
   ...require('./src/models/alfentanil.js'),
   ...require('./src/models/propofol.js'),
   ...require('./src/weights/leanbodymass.js'),
-  ...require('./src/models/remifentanil.js'),
+  ...require('./src/models/remifentanil.js')
 };
