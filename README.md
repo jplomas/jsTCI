@@ -9,6 +9,8 @@
 A **work-in-progress** javascript implementation of PyTCI for modelling
 Target Controlled Infusions in node.js or in a browser.
 
+Demos in development here: [https://jplomas.github.io/jsTCI/?](https://jplomas.github.io/jsTCI/?)
+
 Ported from PyTCI: <https://github.com/JMathiszig-Lee/PyTCI>
 
 ## Development

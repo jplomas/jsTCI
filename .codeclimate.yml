@@ -30,3 +30,6 @@ checks:
   identical-code:
     config:
       threshold: 65
+exclude_patterns:
+- "docs/jsTCI.js"
+- "dist/jsTCI.js"
