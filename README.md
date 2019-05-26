@@ -1,6 +1,7 @@
 # jsTCI
 
 [![Build Status](https://travis-ci.org/jplomas/jsTCI.svg?branch=master)](https://travis-ci.org/jplomas/jsTCI)
+[![npm version](https://badge.fury.io/js/jstci.svg)](https://badge.fury.io/js/jstci)
 [![Coverage Status](https://coveralls.io/repos/github/jplomas/jsTCI/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/jplomas/jsTCI?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/faa36652ca614a08a4f2d02797f589e4)](https://www.codacy.com/app/jplomas/jsTCI?utm_source=github.com&utm_medium=referral&utm_content=jplomas/jsTCI&utm_campaign=Badge_Grade)
 [![Maintainability](https://api.codeclimate.com/v1/badges/63eedcde8b39f251d3c5/maintainability)](https://codeclimate.com/github/jplomas/jsTCI/maintainability)
